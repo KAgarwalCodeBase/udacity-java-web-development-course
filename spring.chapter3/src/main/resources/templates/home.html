@@ -5,7 +5,16 @@
     <title>Home</title>
 </head>
 <body>
-<h1>Hello, homepage</h1>
-<h1 th:text="${welcomeMessage}">Hi, there </h1>
+<!--<h1 th:text="${welcomeMessage}">Hi, t/here </h1>-->
+<form th:object = "${newMessage}" th:action = "@{/home}" action="#" method="POST">
+    <input th:field="*{text}" type="text">
+    <input type="submit">
+</form>
+
+<h1
+        th:each="msg :${greetings}"
+        th:text="${msg}"
+        th:unless="${msg.contains('goodbye')}"
+> Hi, buddy</h1>
 </body>
 </html>
